@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "backend of a shop.",
   "type": "module",
-  "main": "/api/app.ts",
+  "main": "/src/app.ts",
   "scripts": {
     "test": "npm run test",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint ."
   },
   "author": "EltonSudo",
   "license": "ISC",
