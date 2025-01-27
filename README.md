@@ -34,8 +34,12 @@ This API supports secure user registration, login, CRUD operations for products 
 5. **Generate Prisma client**:
    ```bash
    npm run prisma
+6. **Docker**:
+   ```bash
+   docker compose -f 'docker-compose.yml' up -d --build 'app'
+
 7. **Run the application**:
-   
+
    - Development
    ```bash
    npm run dev
