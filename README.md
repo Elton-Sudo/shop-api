@@ -89,7 +89,7 @@ Please follow the guidelines below to contribute effectively:
   ```bash 
   git checkout -b feat/API-your-feature
   ```
-  ![image](https://github.com/user-attachments/assets/20dadf94-78ae-44ec-b826-2c0abd7d3648)
+
 - **Write tests**: Ensure any new functionality is thoroughly tested.
 - **Ensure code quality**: Adhere to the coding style and use ESLint for linting.
 - **Submit a Pull Request**: Once you're happy with your changes, submit a pull request.
@@ -100,5 +100,3 @@ I follow standard JavaScript/TypeScript practices:
 - Use PascalCase for classes and interfaces.
 - Indent with 2 spaces.
 - Always write descriptive commit messages.
-
-
