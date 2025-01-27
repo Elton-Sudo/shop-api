@@ -2,13 +2,12 @@
   "name": "shop-api",
   "version": "1.0.0",
   "description": "backend of a shop.",
-  "type": "module",
   "main": "/src/app.ts",
   "scripts": {
     "test": "npm run test",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "dev": "npx prisma generate nodemon src/app.ts",
+    "dev": "npx prisma generate && nodemon src/app.ts",
     "start": "node src/app.ts",
     "prisma": "npx prisma generate"
   },
