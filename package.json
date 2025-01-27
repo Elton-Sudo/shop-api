@@ -7,7 +7,10 @@
   "scripts": {
     "test": "npm run test",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "npx prisma generate nodemon src/app.ts",
+    "start": "node src/app.ts",
+    "prisma": "npx prisma generate"
   },
   "author": "EltonSudo",
   "license": "ISC",
