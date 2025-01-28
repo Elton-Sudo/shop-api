@@ -19,7 +19,7 @@ This API supports secure user registration, login, CRUD operations for products 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/shop-api.git
+   git clone https://github.com/Elton-Sudo/shop-api.git
    cd shop-api
 2. **Install dependencies**:
    ```bash
