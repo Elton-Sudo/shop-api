@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Set the JavaScript version to compile to
-    "module": "ESNext", // Use ESNext or CommonJS modules
-    "strict": true, // Enable strict type-checking
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true
+    "strict": true,
+    "outDir": "dist",
+    "baseUrl": "./",
+    "resolveJsonModule": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

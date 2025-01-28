@@ -2,19 +2,19 @@
   "name": "shop-api",
   "version": "1.0.0",
   "description": "backend of a shop.",
+  "type": "module",
   "main": "/src/app.ts",
   "scripts": {
     "test": "npm run test",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "dev": "npx prisma generate && nodemon src/app.ts",
-    "start": "node src/app.ts",
+    "dev": "npx prisma generate && nodemon",
+    "start": "tsx src/app.ts",
     "prisma": "npx prisma generate"
   },
   "author": "EltonSudo",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -24,16 +24,28 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
+    "@prisma/client": "^6.2.1",
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.10.10",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-prettier": "^5.2.3",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
     "prisma": "^6.2.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
 }
