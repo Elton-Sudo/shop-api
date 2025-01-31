@@ -5,7 +5,7 @@
   "type": "module",
   "main": "/src/app.ts",
   "scripts": {
-    "test": "npm run test",
+    "test": "jest --watch",
     "format": "prettier --write .",
     "lint": "eslint .",
     "dev": "npx prisma generate && nodemon",
@@ -21,7 +21,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@prisma/client": "^6.2.1",
