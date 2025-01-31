@@ -1,5 +1,7 @@
+import { Product } from '@prisma/client';
 import prisma from '../config/db';
 import ApiError from '../utils/errors/APIErrors';
+import logger from 'src/utils/logger';
 
 class ProductService {
   /**
@@ -8,8 +10,15 @@ class ProductService {
    */
   async getAllProducts() {
     try {
-      return await prisma.product.findMany();
+      const products = await prisma.product.findMany();
+
+      if (!products) {
+        throw ApiError.notFound('No products found');
+      }
+
+      return products;
     } catch (error) {
+      logger.error(`Error retrieving products from the database: `, error);
       throw ApiError.internal('Error retrieving products from the database');
     }
   }
@@ -32,12 +41,16 @@ class ProductService {
       return product;
     } catch (error) {
       if (error instanceof ApiError) {
-        throw error; // Rethrow custom error
+        logger.error(`Error: `, error);
+        throw error;
       }
-      throw ApiError.internal('Error retrieving product from the database');
+
+      logger.error(`Error retrieving product with ID: ${id} from the database`);
+      throw ApiError.internal(
+        `Error retrieving product with ID: ${id} from the database`,
+      );
     }
   }
-
   /**
    * Create a new product
    * @param productData - Product data
@@ -48,11 +61,14 @@ class ProductService {
       return await prisma.product.create({
         data: productData,
       });
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === 'P2002') {
-        // Handle Prisma unique constraint violation (e.g., unique product name or code)
+        // Handle Prisma unique constraint violation
+        logger.error('Product with this name already exists');
         throw ApiError.badRequest('Product with this name already exists');
       }
+
+      logger.error('Error creating product');
       throw ApiError.internal('Error creating product');
     }
   }
@@ -65,18 +81,19 @@ class ProductService {
    */
   async updateProduct(id: string, productData: any) {
     try {
-      const product = await prisma.product.update({
+      return await prisma.product.update({
         where: { id: Number(id) },
         data: productData,
       });
-
-      return product;
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === 'P2025') {
         // Prisma error code for not found
-        throw ApiError.notFound('Product not found to update');
+        logger.error(`Product not found`, error);
+        throw ApiError.notFound(`Product not found`);
       }
-      throw ApiError.internal('Error updating product');
+
+      logger.error(`Error updating product with ID: ${id}`, error);
+      throw ApiError.internal(`Error updating product with ID: ${id}`);
     }
   }
 
@@ -87,17 +104,18 @@ class ProductService {
    */
   async deleteProduct(id: string) {
     try {
-      const product = await prisma.product.delete({
+      return await prisma.product.delete({
         where: { id: Number(id) },
       });
-
-      return product;
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === 'P2025') {
         // Prisma error code for not found
-        throw ApiError.notFound('Product not found to delete');
+        logger.error(`Product not found`, error);
+        throw ApiError.notFound(`Product not found`);
       }
-      throw ApiError.internal('Error deleting product');
+
+      logger.error(`Error deleting product with ID: ${id}`, error);
+      throw ApiError.internal(`Error deleting product with ID: ${id}`);
     }
   }
 }
