@@ -20,9 +20,10 @@ const environment = process.env.NODE_ENV || 'local';
 const errorLogPath = path.join(logDir, 'error.log');
 const combinedLogPath = path.join(logDir, 'combined.log');
 
-const logFormat = winston.format.printf(({ level, message, timestamp }) => {
-  return `[${environment}][${timestamp}] ${level.toUpperCase()}: ${message}`;
+const logFormat = winston.format.printf(({ level, message, timestamp }: winston.Logform.TransformableInfo) => {
+  return `[${environment}][${String(timestamp)}] ${level.toUpperCase()}: ${String(message)}`;
 });
+
 
 const logger = winston.createLogger({
   level: 'info',
